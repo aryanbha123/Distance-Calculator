@@ -12,12 +12,12 @@ app.use(express.json());
 app.get('/aco', (req, res) => {
     const { source, destination } = req.query;
 
-    const startTime = Date.now();  // Capture start time
+    const startTime = Date.now(); 
 
     try {
         exec(`aco.exe ${source} ${destination}`, (error, stdout, stderr) => {
-            const endTime = Date.now();  // Capture end time
-            const executionTime = endTime - startTime;  // Calculate the time taken
+            const endTime = Date.now();  
+            const executionTime = endTime - startTime;  
 
             if (error) {
                 console.error(`Exec error: ${error}`);
@@ -41,12 +41,12 @@ app.get('/aco', (req, res) => {
 app.get('/astar', (req, res) => {
     const { source, destination } = req.query;
 
-    const startTime = Date.now();  // Capture start time
+    const startTime = Date.now(); 
 
     try {
         exec(`astar.exe ${source} ${destination}`, (error, stdout, stderr) => {
-            const endTime = Date.now();  // Capture end time
-            const executionTime = endTime - startTime;  // Calculate the time taken
+            const endTime = Date.now(); 
+            const executionTime = endTime - startTime; 
 
             if (error) {
                 console.error(`Exec error: ${error}`);
@@ -56,7 +56,7 @@ app.get('/astar', (req, res) => {
             console.log(stdout);
             res.status(200).json({
                 msg: stdout,
-                executionTime: `${executionTime}ms`  // Send time taken in the response
+                executionTime: `${executionTime}ms` 
             });
         });
 
@@ -69,14 +69,13 @@ app.get('/astar', (req, res) => {
 
 app.get('/beam', (req, res) => {
     const { source, destination } = req.query;
-
-    const startTime = Date.now();  // Capture start time
+    console.log("Done")
+    const startTime = Date.now();  
 
     try {
         exec(`beam.exe ${source} ${destination}`, (error, stdout, stderr) => {
-            const endTime = Date.now();  // Capture end time
-            const executionTime = endTime - startTime;  // Calculate the time taken
-
+            const endTime = Date.now(); 
+            const executionTime = endTime - startTime;
             if (error) {
                 console.error(`Exec error: ${error}`);
                 return res.status(500).json({ error: stderr, executionTime });
@@ -85,7 +84,7 @@ app.get('/beam', (req, res) => {
             console.log(stdout);
             res.status(200).json({
                 msg: stdout,
-                executionTime: `${executionTime}ms`  // Send time taken in the response
+                executionTime: `${executionTime}ms` 
             });
         });
 
